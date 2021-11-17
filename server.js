@@ -13,7 +13,7 @@ mongoose
   .catch((err) => console.log("error---", err));
 // post
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello from Server");
 });
 
