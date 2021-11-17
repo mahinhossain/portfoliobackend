@@ -34,6 +34,6 @@ app.get("/post", async (req, res) => {
 });
 
 const port = 5000;
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Listening on port ${port}..ok........`);
 });
