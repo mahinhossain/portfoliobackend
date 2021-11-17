@@ -1,6 +1,6 @@
 const app = require("./app");
 const User = require("./UserModel");
-
+const cors = require("cors");
 const mongoose = require("mongoose");
 const serverUrl =
   "mongodb+srv://mahin1234:mahin1234@cluster0.6jhx2.mongodb.net/my-portfolio?retryWrites=true&w=majority";
@@ -12,7 +12,7 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("error---", err));
 // post
-
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello from Server");
 });
