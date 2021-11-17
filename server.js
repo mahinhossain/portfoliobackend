@@ -2,9 +2,10 @@ const app = require("./app");
 const User = require("./UserModel");
 
 const mongoose = require("mongoose");
-
+const serverUrl =
+  "mongodb+srv://mahin1234:mahin1234@cluster0.6jhx2.mongodb.net/my-portfolio?retryWrites=true&w=majority";
 mongoose
-  .connect("mongodb://localhost:27017/my-portfolio", {
+  .connect(serverUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
