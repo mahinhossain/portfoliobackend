@@ -13,6 +13,10 @@ mongoose
   .catch((err) => console.log("error---", err));
 // post
 
+app.get("/", async (req, res) => {
+  res.send("Hello from Server");
+});
+
 app.post("/post", async (req, res) => {
   var myData = await new User(req.body);
   myData
