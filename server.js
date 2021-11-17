@@ -30,7 +30,7 @@ app.post("/post", async (req, res) => {
     })
     .catch((err) => {
       // console.log(`error`, err);
-      res.status(400).send("unable to save to database");
+      res.status(400).send("unable to save to database", err);
     });
 });
 app.get("/post", async (req, res) => {
