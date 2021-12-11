@@ -4,20 +4,18 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 app.use(cors());
 
-const serverUrl =
+const url =
   "mongodb+srv://mahin1234:mahin1234@cluster0.6jhx2.mongodb.net/my-portfolio?retryWrites=true&w=majority";
-mongoose
-  .connect(serverUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log("error---", err));
-// post
-
-app.get("/", (req, res) => {
-  res.send("Hello from Server");
-});
+const serverUrl = async () => {
+  await mongoose
+    .connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log("MongoDB Connected..."))
+    .catch((err) => console.log("error---", err));
+};
+serverUrl();
 
 app.post("/post", async (req, res) => {
   console.log(`req.body`, req.body);
@@ -26,11 +24,11 @@ app.post("/post", async (req, res) => {
   myData
     .save()
     .then((item) => {
-      res.send("item saved to database");
+      res.status(201).send("item saved");
     })
     .catch((err) => {
       // console.log(`error`, err);
-      res.status(400).send("unable to save to database", err);
+      res.status(400).json("unable to save to database");
     });
 });
 app.get("/post", async (req, res) => {
